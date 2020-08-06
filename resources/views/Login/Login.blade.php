@@ -7,7 +7,7 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<center><h3>Liquidaciones de sueldo</h3></center> 
-					<hr style="width:100%; border-color: black;">
+					<hr style="width:100%; border-color: green;">
 				</div>
 				<div class="panel-body">
 					@include('Login/messages') 
@@ -25,13 +25,13 @@
 	                        	<input type="password" id="password" name="password" class="form-control" placeholder="Contraseña" >
 	                      	</div>
 	                   	</div>
-	                   	<button type="submit" class="btn btn-primary btn-block">Aceptar</button>
+	                   	<button type="submit" class="btn btn-success active btn-block">Aceptar</button>
 					</form>
 					<center>
 						<br>
-						<a href="{{ route('Registrarse') }}">Registrar</a>
+						<a href="{{ route('Registrarse') }}" style="color: green;">Registrar</a>
 						<br>
-						<a href="{{ route('Recuprar') }}">Recuperar Contraseña</a>
+						<a href="{{ route('Recuprar') }}" style="color: green;">Recuperar Contraseña</a>
 					</center> 
 				</div>
 			</div> 

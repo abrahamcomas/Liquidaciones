@@ -2,7 +2,7 @@
 @section('content')
 <div class="container-fluid">
 	<center><h3>Liquidaciones de Sueldo año {{ $Anio }}</h3></center> 
-	<hr>   
+	<hr style="width:100%; border-color: green;"> 
 	<div class="row">
 		<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4"></div>
 		<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
@@ -50,11 +50,11 @@
 					@endif
 	       			@endforeach
 				</select>
-				<hr>
+				<br>
                 <div class="form-group">
                   	<div class="form-label-group">
                   		<center>
-                  			<button type="submit" class="btn btn-primary" formtarget="_blank">Imprimir PDF</button>
+                  			<button type="submit" class="btn btn-success active" formtarget="_blank">Imprimir PDF</button>
                   		</center>
                   	</div>
                	</div>
@@ -62,6 +62,7 @@
 		</div>
 		<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4"></div>
 	</div>
+
 	<div class="row">
 		<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4"></div>
 		<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
@@ -69,12 +70,12 @@
 			@csrf 
 				<input type="hidden" name="RUN" value="{{ $RUN }}">
 				<input type="hidden" name="Anio" value="{{ $Anio }}"> 
-
 				@php
 					$date_ano=date("Y");
 				@endphp
 
-				@if (!empty($MesActual) AND $Anio==$date_ano) 
+				@if (!isset($MesActual) AND $Anio==$date_ano) 
+						<hr style="width:100%; border-color: green;">
 						@if (date("n")==1)
 						    @php
 								$MesActual = "Diciembre";
@@ -140,8 +141,8 @@
 						<div class="form-label-group">
                       		<center>
                       			<h4><center>Ultima Liquidación Disponible<br><strong>{{$MesActual}}</strong></center></h4>
-                      			<hr>
-                      			<button type="submit" class="btn btn-primary" formtarget="_blank">
+                      			<br>
+                      			<button type="submit" class="btn btn-success active" formtarget="_blank">
                       				Liquidacion
                       			</button>
                       		</center>
@@ -152,13 +153,12 @@
 		</div>
 		<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4"></div>
 	</div>
-					<hr>
-					<center>
-							<a href="javascript:history.back()"> Volver</a>
-					</center>	
+	<hr style="width:100%; border-color: green;">
+		<center>
+		<a href="javascript:history.back()" style="color: green;"> Volver</a>
+		</center>	
 				</div>
-				<div class="panel-body"> 
-				</div> 
+	 
 			</div> 
 		</div>
 	</div>

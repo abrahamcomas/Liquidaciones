@@ -8,7 +8,7 @@
 				<div class="panel-heading">
 					<center><h3>Liquidaciones de sueldo</h3>
 					<h5>Recuperar Contraseña</h5></center>
-					<hr style="width:100%; border-color: black;">
+					<hr style="width:100%; border-color: green;">
 				</div>
 				<div class="panel-body">
 					@include('Login/messages')
@@ -20,11 +20,11 @@
 	                        	<input type="email" id="Email" name="Email" value="{{ old('Email') }}" class="form-control" placeholder="Email" >
 	                      	</div>
 	                   	</div>
-	                   	<button class="btn btn-primary btn-block">Enviar</button>
+	                   	<button class="btn btn-success active btn-block">Enviar</button>
 					</form>
 					<center>
 						<br>
-						<a href="{{ route('Index') }}">Volver</a>
+						<a href="{{ route('Index') }}" style="color: green;">Volver</a>
 					</center>
 				</div>
 			</div> 

@@ -124,7 +124,7 @@ class LoginController extends Controller
             $user->CorreoActivo = "1";
             $user->save();
 
-            Mail::to($Email)->send(new RegistroCorreo);
+            // Mail::to($Email)->send(new RegistroCorreo);
 
             return view('Login/Registrosend');
 

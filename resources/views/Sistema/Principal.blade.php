@@ -3,7 +3,7 @@
 <div class="container-fluid">  
 <center><h3>Liquidaciones de Sueldo</h3></center> 
 	<center><h5>Seleccione año</h5></center> 
-	<hr> 
+	<hr style="width:100%; border-color: green;">
 	<div class="row">
 		<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2"></div>
 		<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
@@ -26,7 +26,7 @@
 		</div>
 		<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2"></div>
 	</div>
-		<hr> 
+	<hr style="width:100%; border-color: green;">
 	<div class="row">
 		<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4"></div>
 		<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
@@ -46,10 +46,10 @@
 									</select>
 								</div>
 							</div>
-							<hr>
+							<br>
 		                    <div class="form-group">
 		                      	<div class="form-label-group">
-		                      		<center><button type="submit" class="btn btn-primary">Continuar</button></center>
+		                      		<center><button type="submit" class="btn btn-success active">Continuar</button></center>
 		                      	</div>
 		                   	</div> 
 						</form>
