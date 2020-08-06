@@ -10,19 +10,15 @@ class FichaFuncionario extends Model
     protected $table="FichaFuncionario";
     protected $primaryKey="Id_Funcionario";
 
-    /*inset multiples
+    //pongo los caampos para permitir insert multiple
     protected $fillable=[
-
-    		//pongo los caampos para permitir insert multiple
-
-    	"sasasa",
-    	"sddsdsd",
-    	"wsasasa"
-
-
+    	"Email",
+    	"password",
+    	"CorreoActivo",
+        "remember_token"
     ]; 
 
-
+    /*
     inset multiples
     protected $guarded=[
 
@@ -36,6 +32,14 @@ class FichaFuncionario extends Model
     ]
 
     */
+
+
+
+//  public function PermisosAdministrativo()
+// {
+//     return $this->hasOne('App\PermisosAdministrativos', 'Id_Funcionario','Id_Funcionario');
+// }
+    public $timestamps = false;
 
 }
  

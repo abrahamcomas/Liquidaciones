@@ -16,4 +16,5 @@ class Login extends Model
         return $this->hasOne('App\FichaFuncionario','Id_Funcionario','Id_Funcionario');
     }
 */
+        public $timestamps = false;
 }

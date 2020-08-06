@@ -14,7 +14,7 @@
 					@include('Login/messages')
 					<form method="POST" action="{{ route('Registro') }}">
 						@csrf @method('PATCH')
-						<div class="form-group {{ $errors->has('Rut') ? 'has-error' : '' }}">
+						<div class="form-group">
 	                      	<div class="form-label-group">
 	                      		<center><label for="Rut">Ingrese RUN</label></center>
 	                        	<input type="text" class="form-control" name="Rut" id="Rut" value="{{ old('Rut') }}" oninput="checkRut(this)" placeholder="RUN" >
@@ -41,8 +41,10 @@
 	                   	</div>
 	                   	<button class="btn btn-primary btn-block">Aceptar</button>
 					</form>
-					<br>
-					<a href="{{ route('Index') }}">Volver</a>
+					<center>
+						<br>
+						<a href="{{ route('Index') }}">Volver</a>
+					</center>
 				</div>
 			</div> 
 		</div>

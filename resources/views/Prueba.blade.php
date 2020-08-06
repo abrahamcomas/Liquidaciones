@@ -14,7 +14,7 @@
 
 @if(count($alumnos))
 
-<table width="50%" border="1">
+<table width="50%" border="1"> 
 	
 @foreach($alumnos as $persona)
 <tr>
