@@ -7,11 +7,11 @@ use Illuminate\Auth\Middleware\Authenticate;
 use App\User;
 use Illuminate\Http\Request;
 
-
+ 
 //Rutas De Login 
-Route::get('/', function () {
+Route::get('/', function () {  
     return view('Login/Login');
-})->name('Index'); 
+})->name('Index');  
 
 Route::get('Registro', function () {
     return view('Login/Registrarse');
@@ -21,24 +21,37 @@ Route::patch('login','Login\LoginController@registro')->name('Registro');
 Route::get('RecuperarContraseña', function () { 
     return view('Login/RecuperarContraseña');
 })->name('Recuprar');
-Route::post('Login/RecuperarContraseña','Login\LoginController@RecuperarContraseña')->name('ContraseñaEnviada');
-
-
-
-
 
 
 
 
 Route::get('SistemaMes')->middleware('auth'); 
-Route::post('SistemaMes','ConsultaMesController@Mes')->middleware('auth')->name('ConsultaMes'); 
-
-
+Route::post('SistemaMes','ConsultaMesController@Mes')->name('ConsultaMes')->middleware('auth'); 
 
 //Login 
 Route::get('CerrarSesion','Login\CerrarLoginControler@CerrarSesion')->middleware('auth')->name('CerrarSesion');
 
 
+Route::get('CambiarContraseña', function () {
+    return view('Login/CambiarContraseña');
+})->middleware('auth')->name('CambiarContraseña'); 
+
+
+//Contraseña
+Route::get('ConfirmarCambioContraseña')->middleware('auth');
+Route::post('ConfirmarCambioContraseña','Login\CambiarContController@CambiarContraseña')->middleware('auth')->name('FormContraseña');
+Route::get('Sistema','Login\VolverIndexController@VolverIndex')->middleware('auth')->name('VolverIndex');
+
+//Recuperar Contraseña
+Route::post('Login/RecuperarContraseña','Login\RecuperarContController@RecuperarCont')->name('ContraseñaEnviada');
+
+//Cambiar Correo
+Route::get('Sistema/CambiarCorreo', function () {
+    return view('Login/CambiarCorreo');
+})->middleware('auth')->name('CambiarCorreo'); 
+Route::post('ConfirmarCambioCorreo','Login\CambiarCorreoController@CambiarCorreo')->middleware('auth')->name('FormCorreo');
+
+//Login
 Route::get('Sistema/Principal','Login\CerrarLoginControler@NoLogin')->middleware('auth');
 Route::post('Sistema/Principal','Login\LoginController@Login')->name('login'); 
 

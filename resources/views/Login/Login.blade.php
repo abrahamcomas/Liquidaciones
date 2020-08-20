@@ -29,9 +29,9 @@
 					</form>
 					<center>
 						<br>
-						<a href="{{ route('Registrarse') }}" style="color: green;">Registrar</a>
+						<a href="{{ route('Registrarse') }}" style="color: green;">Registrarse</a>
 						<br>
-						<a href="{{ route('Recuprar') }}" style="color: green;">Recuperar Contraseña</a>
+					{{-- 	<a href="{{ route('Recuprar') }}" style="color: green;">Recuperar Contraseña</a> --}}
 					</center> 
 				</div>
 			</div> 

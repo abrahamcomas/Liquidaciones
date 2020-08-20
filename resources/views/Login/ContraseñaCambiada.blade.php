@@ -6,17 +6,24 @@
 		<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					<center><h3>Liquidaciones de sueldo</h3></center> 
+					<center>
+						<h3>Liquidaciones de Sueldo</h3>
+					</center>  
 					<hr style="width:100%; border-color: green;">
+					<div class="panel-body">
+						<center>
+							<h2><strong>{{ $resultado }}</strong></h2>
+						</center>				
+						<hr style="width:100%; border-color: green;">
+						<center>
+							<a href="{{ route('VolverIndex') }}" style="color: green;">Volver</a>
+						</center>
+					</div>
 				</div>
-				<div class="panel-body">
-					<center><h5>{{ $resultado }}</h5></center> 
-					<br>
-					<center><a href="{{ route('Index') }}" style="color: green;">Volver</a></center> 
-				</div>
-			</div> 
+			</div>
 		</div>
 		<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4"></div>
 	</div>
 </div>
-@endsection 
+@endsection   
+

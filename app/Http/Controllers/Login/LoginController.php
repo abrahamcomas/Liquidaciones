@@ -49,10 +49,14 @@ class LoginController extends Controller
                 ->first();
 
 
-                $numerodiassolicitados = $sqlnumerodiassolicitados->NroDiasSolicitados;
+                if (!empty($sqlnumerodiassolicitados->NroDiasSolicitados)) {
+                  $numerodiassolicitados = $sqlnumerodiassolicitados->NroDiasSolicitados;
+                }
+                else{
+                    $numerodiassolicitados = 0;
+                }
+              
 
-                
-            
                 $R_numerodiassolicitados=($seis - $numerodiassolicitados);
 
 
@@ -99,7 +103,7 @@ class LoginController extends Controller
     public function registro(Request $request)
     {
         $credenciales = $this->validate(request(),[
-            'Rut' => 'required',
+            'Rut' => 'required', 
             'Contraseña' => 'required|min:6',
             'Comfirmar_Contraseña' => 'required:Contraseña|same:Contraseña|min:6|different:password',
             'Email' => 'required',
@@ -115,24 +119,26 @@ class LoginController extends Controller
 
         if (!empty($Funcionario))   
         {
-            
-            $id=FichaFuncionario::Select('Id_Funcionario')->whereRut($Rut)->first();
+            $FuncionarioCorreo=DB::table('FichaFuncionario')->where('Email', $Email)->exists();
 
-            $user = FichaFuncionario::find($id->Id_Funcionario);
-            $user->Email = $Email;
-            $user->password = Hash::make($request->Contraseña);
-            $user->CorreoActivo = "1";
-            $user->save();
+            if ($FuncionarioCorreo==0) {
+                    
+                   $id=FichaFuncionario::Select('Id_Funcionario')->whereRut($Rut)->first();
 
-            // Mail::to($Email)->send(new RegistroCorreo);
+                    $user = FichaFuncionario::find($id->Id_Funcionario);
+                    $user->Email = $Email;
+                    $user->password = Hash::make($request->Contraseña);
+                    $user->CorreoActivo = "1";
+                    $user->save();
 
-            return view('Login/Registrosend');
+                    $resultado='Registro Realizado Correctamente';
+            }
+            else
+            {
+                    $resultado='Error, Correo Registrado Anteriormente';
+            }  
 
-
-            /*return view('Registrado', [
-                    'Funcionario' => $Funcionario
-                ]);
-              */  
+            return view('Login/Registrosend')->with('resultado', $resultado);
         } 
         else
         {
@@ -142,24 +148,8 @@ class LoginController extends Controller
             ->withInput(request(['Rut','Email']));
 
         }
+
+
     }
-
-     public function RecuperarContraseña(Request $request)
-    {
-
-        $credenciales = $this->validate(request(),[
-            'Email' => 'required',
-        ]);
-        $Email = $request->input('Email');
-
-        Mail::to($Email)->send(new RecuperarPassword);
-
-            return view('Login/Registrosend');
-
-
-     
-       
-    
-}
  
 }

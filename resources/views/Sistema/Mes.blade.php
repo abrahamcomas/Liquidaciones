@@ -55,7 +55,7 @@
                   	<div class="form-label-group">
                   		<center>
                   			<button type="submit" class="btn btn-success active" formtarget="_blank">Imprimir PDF</button>
-                  		</center>
+                  		</center> 
                   	</div>
                	</div>
             </form>

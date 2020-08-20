@@ -49,7 +49,7 @@
 
 	 #h { 
 
-        height:30px;
+        height:auto;
         background: #000000;
         background: -moz-radial-gradient(0% 100%, ellipse cover, rgba(65, 255, 0,.1) 10%,rgba(138,114,76,0) 40%),-moz-linear-gradient(top,  rgba(255, 255, 255,.25) 0%, rgba(0, 0, 0,.1) 100%), -moz-linear-gradient(-45deg,  #000000 0%, #000000 100%);
         background: -webkit-radial-gradient(0% 100%, ellipse cover, rgba(65, 255, 0,.4) 10%,rgba(138,114,76,0) 40%), -webkit-linear-gradient(top,  rgba(255, 255, 255,.25) 0%,rgba(65, 255, 0) 100%), -webkit-linear-gradient(-45deg,  #000000 0%,#000000 100%);
@@ -76,26 +76,49 @@
 	  	@if (Route::has('Index')) 
 			<div class="top-right link">
 				@auth
-					<a class="navbar-brand" href="#" style="color: white;">Bienvenido {{ Auth::user()->Nombres}} {{ Auth::user()->Apellidos }}</a>
+					<a class="navbar-brand" href="#" style="color: white;">Bienvenido {{ Auth::user()->Nombres}} {{ Auth::user()->Apellidos }}</a><a style="font-size:13px; color: white;"><h7>{{ Auth::user()->Email}}</h7></a>
 				@else
 					<a class="navbar-brand" href="#" style="color: white;">Liquidaciones de sueldo</a>		
 				@endauth
 			</div>
 		@endif
-	  	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-	    <span class="navbar-toggler-icon"></span>
-	  	</button>
-	  	<ul class="navbar-nav ml-auto">
-	  	<div class="collapse navbar-collapse" id="navbarSupportedContent">
-	    	@if (Route::has('Index'))
+	  	<ul class="navbar-nav ml-auto"> 
+	    	@if (Route::has('Index')) 
 				<div class="top-right link">
 					@auth
-						<a href="{{ route('CerrarSesion') }}" style="color: white;">Cerrar Sesión</a>
-					@endauth
+		    			<li class="nav-item dropdown">
+			        		<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">
+			        			Opciones
+			        		</a>
+				    		<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+				    			<a class="dropdown-item" href="{{ route('CambiarCorreo') }}" style="font-size:14px;">	 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-at" 
+				    					fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+										  <path fill-rule="evenodd" d="M13.106 7.222c0-2.967-2.249-5.032-5.482-5.032-3.35 0-5.646 2.318-5.646 5.702 0 3.493 2.235 5.708 5.762 5.708.862 0 1.689-.123 2.304-.335v-.862c-.43.199-1.354.328-2.29.328-2.926 0-4.813-1.88-4.813-4.798 0-2.844 1.921-4.881 4.594-4.881 2.735 0 4.608 1.688 4.608 4.156 0 1.682-.554 2.769-1.416 2.769-.492 0-.772-.28-.772-.76V5.206H8.923v.834h-.11c-.266-.595-.881-.964-1.6-.964-1.4 0-2.378 1.162-2.378 2.823 0 1.737.957 2.906 2.379 2.906.8 0 1.415-.39 1.709-1.087h.11c.081.67.703 1.148 1.503 1.148 1.572 0 2.57-1.415 2.57-3.643zm-7.177.704c0-1.197.54-1.907 1.456-1.907.93 0 1.524.738 1.524 1.907S8.308 9.84 7.371 9.84c-.895 0-1.442-.725-1.442-1.914z"/>
+									</svg>&nbsp;Email
+								</a>
+					    		<a class="dropdown-item" href="{{ route('CambiarContraseña') }}" style="font-size:14px;">	 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-lock-fill" 
+					    				fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+	  									<path d="M2.5 9a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2V9z"/>
+	  									<path fill-rule="evenodd" d="M4.5 4a3.5 3.5 0 1 1 7 0v3h-1V4a2.5 2.5 0 0 0-5 0v3h-1V4z"/>
+									</svg>&nbsp;Contraseña
+								</a>
+          						<a class="dropdown-item" href="{{ route('CerrarSesion') }}" style="font-size:14px;">
+          							<svg 	width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-fill" 
+          							fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  										<path fill-rule="evenodd" d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+									</svg>&nbsp;Cerrar
+								</a>
+				    		</div>
+		      			</li>
+		    		@endauth
 				</div>
 			@endif
-  		</div>
+  </ul>
 	</nav>
+
+
+
+
 	<img id="imagen1" img src="{{ asset('imagenes/logo2.png') }}" width="200" height="60"/>
 </head>
 <div class="container">

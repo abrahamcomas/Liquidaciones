@@ -991,6 +991,6 @@ $z=0;
 else{
     ?>
 
-    <center><h1>Error</h1></center>
+    <center><h3>Su Liquidación no se encuentra disponible, diríjase a dirección de gestión de personas.</h3></center>
 <?php }
 ?>

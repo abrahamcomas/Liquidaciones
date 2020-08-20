@@ -17,7 +17,7 @@ class ConsultaMesController extends Controller
     {
         $Anio = $request->Anio; 
         $Id_Funcionario = $request->Id_Funcionario; 
-             $RUN = $request->RUN; 
+        $RUN = $request->RUN;  
 
 		$ListaMes=DB::table('HistoricoLiquidacion')->where('Id_Funcionario', $Id_Funcionario)->where('Ano', $Anio)->distinct()->orderBy('Mes', 'ASC')->get('Mes');
 

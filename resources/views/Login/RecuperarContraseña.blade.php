@@ -11,12 +11,12 @@
 					<hr style="width:100%; border-color: green;">
 				</div>
 				<div class="panel-body">
-					@include('Login/messages')
+					@include('Login/messages')  
 					<form method="POST" action="{{ route('ContraseñaEnviada') }}">
 						@csrf 
 	                   	<div class="form-group">
 	                      	<div class="form-label-group">
-	                      		<center><label for="password"><center>Ingrese Email</center></label></center> 
+	                      		<center><label for="password"><center>Ingrese Email{{ 	 $R = Str::random(60), }}</center></label></center> 
 	                        	<input type="email" id="Email" name="Email" value="{{ old('Email') }}" class="form-control" placeholder="Email" >
 	                      	</div>
 	                   	</div>
