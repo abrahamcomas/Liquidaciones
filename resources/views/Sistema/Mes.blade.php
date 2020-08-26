@@ -4,8 +4,8 @@
 	<center><h3>Liquidaciones de Sueldo año {{ $Anio }}</h3></center> 
 	<hr style="width:100%; border-color: green;"> 
 	<div class="row">
-		<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4"></div>
-		<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-4"></div>
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
 			<form method="POST" action="{{ route('CrearPDF') }}">  
 				@csrf
 				<input type="hidden" name="RUN" value="{{ $RUN }}">
@@ -60,12 +60,12 @@
                	</div>
             </form>
 		</div>
-		<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4"></div>
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-4"></div>
 	</div>
 
 	<div class="row">
-		<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4"></div>
-		<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-4"></div>
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
 			<form method="POST" action="{{ route('CrearPDFActual') }}">
 			@csrf 
 				<input type="hidden" name="RUN" value="{{ $RUN }}">
@@ -151,7 +151,7 @@
 				@endif
 			</form>
 		</div>
-		<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4"></div>
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-4"></div>
 	</div>
 	<hr style="width:100%; border-color: green;">
 		<center>

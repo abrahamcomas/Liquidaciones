@@ -88,7 +88,7 @@ class LoginController extends Controller
         {
 
             return back()
-                ->withErrors(['Debes Actualizar Contraseña'])
+                ->withErrors(['Debes registrarte'])
                 ->withInput(request(['RUN']));
         }
         else
@@ -104,14 +104,14 @@ class LoginController extends Controller
     {
         $credenciales = $this->validate(request(),[
             'Rut' => 'required', 
-            'Contraseña' => 'required|min:6',
-            'Comfirmar_Contraseña' => 'required:Contraseña|same:Contraseña|min:6|different:password',
+            'Contrasenia' => 'required|min:6',
+            'Comfirmar_Contrasenia' => 'required:Contrasenia|same:Contrasenia|min:6|different:password',
             'Email' => 'required',
         ]);
 
         $Rut = $request->input('Rut');
         $Email = $request->input('Email');
-        $Contraseña = $request->input('Contraseña');
+        $Contrasenia = $request->input('Contrasenia');
 
         //$Funcionario=FichaFuncionario::where("Rut",$Rut)->get()->count();
 
@@ -127,7 +127,7 @@ class LoginController extends Controller
 
                     $user = FichaFuncionario::find($id->Id_Funcionario);
                     $user->Email = $Email;
-                    $user->password = Hash::make($request->Contraseña);
+                    $user->password = Hash::make($request->Contrasenia);
                     $user->CorreoActivo = "1";
                     $user->save();
 

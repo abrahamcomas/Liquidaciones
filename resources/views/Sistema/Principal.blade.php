@@ -28,8 +28,8 @@
 	</div>
 	<hr style="width:100%; border-color: green;">
 	<div class="row">
-		<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4"></div>
-		<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-4"></div>
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
 				<div class="panel panel-default">
 					<div class="panel-heading"> 
 						<form method="POST" action="{{ route('ConsultaMes') }}"> 
@@ -57,9 +57,8 @@
 					<div class="panel-body"> 
 					</div> 
 				</div> 		
-		
 		</div>
-		<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4"></div>
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-4"></div>
 	</div>
 </div>
 @endsection   

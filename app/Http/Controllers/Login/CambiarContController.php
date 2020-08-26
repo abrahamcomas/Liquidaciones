@@ -10,16 +10,16 @@ use Illuminate\Support\Facades\Hash;
 
 class CambiarContController extends Controller
 {
-      public function CambiarContraseña(Request $request)
+      public function CambiarContrasenia(Request $request)
     	{ 
     		 $credenciales = $this->validate(request(),[
             'passwordActual' => 'required',
-            'Contraseña' => 'required',
-            'Comfirmar_Contraseña' => 'required:Contraseña|same:Contraseña|min:6|different:password',
+            'Contrasenia' => 'required',
+            'Comfirmar_Contrasenia' => 'required:Contrasenia|same:Contrasenia|min:6|different:password',
         ]);
 
         $passwordActual = $request->input('passwordActual'); 
-        $Contraseña = $request->input('Contraseña');  
+        $Contrasenia = $request->input('Contrasenia');  
 
         $Rut = Auth::user()->Rut;
         $Id_Funcionario = Auth::user()->Id_Funcionario;
@@ -29,7 +29,7 @@ class CambiarContController extends Controller
 		if(Hash::check($passwordActual, $FuncionarioPassword->password)){
 		        
 		          $user = FichaFuncionario::find($Id_Funcionario);
-	            $user->password = Hash::make($request->Contraseña);
+	            $user->password = Hash::make($request->Contrasenia);
 	            $user->save();
 
 			$resultado='Contraseña Actualizada Correctamente';
@@ -39,7 +39,7 @@ class CambiarContController extends Controller
 			$resultado='Contraseña actual es incorrecta';
 		}
    		
-   		return view('Login/ContraseñaCambiada')->with('resultado', $resultado);
+   		return view('Login/ContraseniaCambiada')->with('resultado', $resultado);
 
  	}
 

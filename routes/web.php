@@ -18,8 +18,8 @@ Route::get('Registro', function () {
 })->name('Registrarse');
 Route::patch('login','Login\LoginController@registro')->name('Registro');
 
-Route::get('RecuperarContraseña', function () { 
-    return view('Login/RecuperarContraseña');
+Route::get('RecuperarContrasenia', function () { 
+    return view('Login/RecuperarContrasenia');
 })->name('Recuprar');
 
 
@@ -32,18 +32,18 @@ Route::post('SistemaMes','ConsultaMesController@Mes')->name('ConsultaMes')->midd
 Route::get('CerrarSesion','Login\CerrarLoginControler@CerrarSesion')->middleware('auth')->name('CerrarSesion');
 
 
-Route::get('CambiarContraseña', function () {
-    return view('Login/CambiarContraseña');
-})->middleware('auth')->name('CambiarContraseña'); 
+Route::get('CambiarContrasenia', function () {
+    return view('Login/CambiarContrasenia');
+})->middleware('auth')->name('CambiarContrasenia'); 
 
 
 //Contraseña
-Route::get('ConfirmarCambioContraseña')->middleware('auth');
-Route::post('ConfirmarCambioContraseña','Login\CambiarContController@CambiarContraseña')->middleware('auth')->name('FormContraseña');
+Route::get('ConfirmarCambioContrasenia')->middleware('auth');
+Route::post('ConfirmarCambioContrasenia','Login\CambiarContController@CambiarContrasenia')->middleware('auth')->name('FormContrasenia');
 Route::get('Sistema','Login\VolverIndexController@VolverIndex')->middleware('auth')->name('VolverIndex');
 
 //Recuperar Contraseña
-Route::post('Login/RecuperarContraseña','Login\RecuperarContController@RecuperarCont')->name('ContraseñaEnviada');
+Route::post('Login/RecuperarContrasenia','Login\RecuperarContController@RecuperarCont')->name('ContraseniaEnviada');
 
 //Cambiar Correo
 Route::get('Sistema/CambiarCorreo', function () {

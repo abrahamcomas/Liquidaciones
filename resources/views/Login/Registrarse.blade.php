@@ -2,8 +2,8 @@
 @section('content')
 <div class="container-fluid">  
 	<div class="row">
-		<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4"></div>
-		<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-4"></div>
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<center><h3>Liquidaciones de sueldo</h3>
@@ -24,13 +24,13 @@
 	                    <div class="form-group">
 	                      	<div class="form-label-group">
 	                      		<center><label for="Contraseña"><center>Ingrese Contraseña</center></label></center> 
-	                        	<input type="password" id="Contraseña" name="Contraseña" class="form-control" placeholder="Contraseña" >
+	                        	<input type="password" id="Contrasenia" name="Contrasenia" class="form-control" placeholder="Contraseña" >
 	                      	</div>
 	                   	</div>
 	                   	<div class="form-group">
 	                      	<div class="form-label-group">
 	                      		<center><label for="Comfirmar_Contraseña"><center>Confirmar Contraseña</center></label></center> 
-	                        	<input type="password" id="Comfirmar_Contraseña" name="Comfirmar_Contraseña" class="form-control" placeholder="Conformar Contraseña" >
+	                        	<input type="password" id="Comfirmar_Contrasenia" name="Comfirmar_Contrasenia" class="form-control" placeholder="Conformar Contraseña" >
 	                      	</div>
 	                   	</div>
 	                   	<div class="form-group">
@@ -48,7 +48,7 @@
 				</div>
 			</div> 
 		</div>
-		<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4"></div>
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-4"></div>
 	</div>
 </div>
 @endsection
