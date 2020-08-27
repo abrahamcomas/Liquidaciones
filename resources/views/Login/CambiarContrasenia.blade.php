@@ -17,19 +17,19 @@
 							 <div class="form-group">
 		                      	<div class="form-label-group">
 		                      		<center><label for="password"><center>Ingrese Contraseña Actual</center></label></center> 
-		                        	<input type="password" id="passwordActual" name="passwordActual" class="form-control" placeholder="Contraseña" >
+		                        	<input type="password" id="passwordActual" name="passwordActual" class="form-control" placeholder="Contraseña Actual" >
 		                      	</div>
 		                   	</div>					                    
 		                   	<div class="form-group">
 		                      	<div class="form-label-group">
 		                      		<center><label for="password"><center>Ingrese Nueva Contraseña</center></label></center> 
-		                        	<input type="password" id="Contrasenia" name="Contrasenia" class="form-control" placeholder="Contraseña" >
+		                        	<input type="password" id="Contrasenia" name="Contrasenia" class="form-control" placeholder="Contraseña Nueva" >
 		                      	</div>
 		                   	</div>
 		                   	<div class="form-group">
 		                      	<div class="form-label-group">
-		                      		<center><label for="password"><center>Confirme Contraseña</center></label></center> 
-		                        	<input type="password" id="Comfirmar_Contrasenia" name="Comfirmar_Contrasenia" class="form-control" placeholder="Confirme Contraseña" >
+		                      		<center><label for="password"><center>Confirme Nueva Contraseña</center></label></center> 
+		                        	<input type="password" id="Comfirmar_Contrasenia" name="Comfirmar_Contrasenia" class="form-control" placeholder="Confirme Contraseña Nueva" >
 		                      	</div>
 		                   	</div>
 		                   	<button type="submit" class="btn btn-success active btn-block">Aceptar</button>

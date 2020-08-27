@@ -15,8 +15,8 @@
 						@csrf   
 						<div class="form-group">
 	                      	<div class="form-label-group">
-	                      		<center><label for="Rut">Ingrese RUN</label></center>
-	                        	<input type="text" class="form-control" name="RUN" id="RUN" oninput="checkRut(this)" placeholder="RUN" value="{{ old('RUN') }}">
+	                      		<center><label for="Rut">Ingrese Rut</label></center>
+	                        	<input type="text" class="form-control" name="RUN" id="RUN" oninput="checkRut(this)" placeholder="Rut" value="{{ old('RUN') }}">
 	                      	</div>
 	                    </div>
 	                    <div class="form-group">

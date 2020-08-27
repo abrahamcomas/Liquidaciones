@@ -6,7 +6,7 @@
 	<hr style="width:100%; border-color: green;">
 	<div class="row">
 		<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2"></div>
-		<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+		<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4"> 
 			<center>
                 <h6>
                 	<center>
@@ -31,7 +31,7 @@
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-4"></div>
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
 				<div class="panel panel-default">
-					<div class="panel-heading"> 
+					<div class="panel-heading">
 						<form method="POST" action="{{ route('ConsultaMes') }}"> 
 							@csrf
 							<input type="hidden" name="RUN" value="{{ $RUN }}">
@@ -39,7 +39,7 @@
 							<div class="row">
 								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 									<select id="Anio" name="Anio" class="form-control">
-										<option value="" selected>Seleccionar</option>
+										
 						       			@foreach($resultado as $anio)
 						       				<option value="{{ $anio->Ano }}">{{ $anio->Ano }}</option>
 						       			@endforeach

@@ -10,12 +10,19 @@ use Illuminate\Support\Facades\Hash;
 
 class CambiarCorreoController extends Controller
 {
-    public function CambiarCorreo(Request $request)
+        public function CambiarCorreo(Request $request)
     	{ 
-    		 $credenciales = $this->validate(request(),[
+    		$rules = [
             'passwordActual' => 'required',
             'Correo' => 'required',
-        ]);
+        ];
+
+        $messages = [
+            'passwordActual.required' =>'El campo contraseña actual es obligatorio.',
+            'Correo.required' =>'El campo Email es obligatorio.'
+        ];
+
+        $this->validate($request, $rules, $messages);
  
         $passwordActual = $request->input('passwordActual'); 
         $Correo = $request->input('Correo'); 

@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-  
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB; 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB; 
+
 class ConsultaMesController extends Controller 
 {
 	public function __construct()
@@ -13,11 +14,12 @@ class ConsultaMesController extends Controller
 
 	}
 
-    public function Mes(Request $request) 
+    public function Mes(Request $request)  
     {
-        $Anio = $request->Anio; 
-        $Id_Funcionario = $request->Id_Funcionario; 
-        $RUN = $request->RUN;  
+
+ 		$Anio = $request->input('Anio'); 
+        $Id_Funcionario = $request->input('Id_Funcionario');  
+        $RUN = $request->input('RUN');   
 
 		$ListaMes=DB::table('HistoricoLiquidacion')->where('Id_Funcionario', $Id_Funcionario)->where('Ano', $Anio)->distinct()->orderBy('Mes', 'ASC')->get('Mes');
 

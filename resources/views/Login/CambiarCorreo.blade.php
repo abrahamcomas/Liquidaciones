@@ -23,7 +23,7 @@
 		                   	<div class="form-group">
 		                      	<div class="form-label-group">
 		                      		<center><label for="password"><center>Ingrese Nuevo Email</center></label></center> 
-		                        	<input type="email" id="Correo" name="Correo" class="form-control" placeholder="Correo" >
+		                        	<input type="email" id="Correo" name="Correo" class="form-control" placeholder="Email" >
 		                      	</div>
 		                   	</div>
 		                   	<button type="submit" class="btn btn-success active btn-block">Aceptar</button>

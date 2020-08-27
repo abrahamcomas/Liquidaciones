@@ -1,5 +1,5 @@
 @extends('App')
-@section('content')
+@section('content') 
 <div class="container-fluid">  
 	<div class="row">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-4"></div>
@@ -16,21 +16,21 @@
 						@csrf @method('PATCH')
 						<div class="form-group">
 	                      	<div class="form-label-group">
-	                      		<center><label for="Rut">Ingrese RUN</label></center>
-	                        	<input type="text" class="form-control" name="Rut" id="Rut" value="{{ old('Rut') }}" oninput="checkRut(this)" placeholder="RUN" >
+	                      		<center><label for="Rut">Ingrese Rut</label></center>
+	                        	<input type="text" class="form-control" name="Rut" id="Rut" value="{{ old('Rut') }}" oninput="checkRut(this)" placeholder="Rut" >
 	                        	<!--{!! $errors->first('Rut','<span class="help-block">:message</span>') !!}-->
 	                      	</div>
 	                    </div>
 	                    <div class="form-group">
 	                      	<div class="form-label-group">
-	                      		<center><label for="Contraseña"><center>Ingrese Contraseña</center></label></center> 
+	                      		<center><label for="Contrasenia"><center>Ingrese Contraseña</center></label></center> 
 	                        	<input type="password" id="Contrasenia" name="Contrasenia" class="form-control" placeholder="Contraseña" >
 	                      	</div>
 	                   	</div>
 	                   	<div class="form-group">
 	                      	<div class="form-label-group">
-	                      		<center><label for="Comfirmar_Contraseña"><center>Confirmar Contraseña</center></label></center> 
-	                        	<input type="password" id="Comfirmar_Contrasenia" name="Comfirmar_Contrasenia" class="form-control" placeholder="Conformar Contraseña" >
+	                      		<center><label for="Confirmar_Contraseña"><center>Confirmar Contraseña</center></label></center> 
+	                        	<input type="password" id="Confirmar_Contrasenia" name="Confirmar_Contrasenia" class="form-control" placeholder="Confirmar Contraseña" >
 	                      	</div>
 	                   	</div>
 	                   	<div class="form-group">
