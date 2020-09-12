@@ -6,11 +6,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB; 
 
-class ConsultaMesController extends Controller 
+class ConsultaMesControllerCe extends Controller
 {
-	public function __construct()
+    public function __construct()
 	{
-		$this->middleware('auth');
+		$this->middleware('auth:Cementerio');
 
 	}
 
@@ -25,8 +25,8 @@ class ConsultaMesController extends Controller
 
 		$MesActual=DB::table('Liquidacion')->where('Id_Funcionario', $Id_Funcionario)->get();
 
-            return view('Sistema/PlantaContrata/Mes')->with('ListaMes', $ListaMes)->with('MesActual', $MesActual)->with('RUN', $RUN)->with('Id_Funcionario', $Id_Funcionario)->with('Anio', $Anio);
+            return view('Sistema/Cementerio/MesCementerio
+            	')->with('ListaMes', $ListaMes)->with('MesActual', $MesActual)->with('RUN', $RUN)->with('Id_Funcionario', $Id_Funcionario)->with('Anio', $Anio);
    
 	}
 }
- ?>  

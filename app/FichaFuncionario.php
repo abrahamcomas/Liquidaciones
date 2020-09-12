@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class FichaFuncionario extends Model
 {
+    protected $connection = 'sqlsrv';
 	//referencia a una tabla
     protected $table="FichaFuncionario";
     protected $primaryKey="Id_Funcionario";

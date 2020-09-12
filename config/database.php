@@ -91,6 +91,31 @@ return [
             'prefix_indexes' => true,
         ],
 
+        'codigo'  => [
+            'driver' => 'sqlsrv',
+            'url' => env('DATABASE_URL_CO'),
+            'host' => env('DB_HOST_CO', '127.0.0.1'),
+            'port' => env('DB_PORT_CO', '1433'),
+            'database' => env('DB_DATABASE_CO', 'forge'),
+            'username' => env('DB_USERNAME_CO', 'forge'),
+            'password' => env('DB_PASSWORD_CO', ''),
+            'charset' => 'utf8',
+            'prefix' => '',
+            'prefix_indexes' => true,
+        ],
+
+        'cementerio'  => [
+            'driver' => 'sqlsrv',
+            'url' => env('DATABASE_URL_CE'),
+            'host' => env('DB_HOST_CE', '127.0.0.1'),
+            'port' => env('DB_PORT_CE', '1433'),
+            'database' => env('DB_DATABASE_CE', 'forge'),
+            'username' => env('DB_USERNAME_CE', 'forge'),
+            'password' => env('DB_PASSWORD_CE', ''),
+            'charset' => 'utf8',
+            'prefix' => '',
+            'prefix_indexes' => true,
+        ],
     ],
 
     /*

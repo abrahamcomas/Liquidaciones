@@ -1,6 +1,6 @@
 <?php
  
-namespace App\Http\Controllers\Login;
+namespace App\Http\Controllers\LoginCementerio;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -11,15 +11,15 @@ class volverIndexController extends Controller
 { 
     public function VolverIndex(Request $request) 
     {
-       	$Id_Funcionario = Auth::user()->Id_Funcionario;
- 		$RUN = Auth::user()->Rut;
+        $RUN = Auth::guard('Cementerio')->user()->Rut;
+        $Id_Funcionario = Auth::guard('Cementerio')->user()->Id_Funcionario;
              
-        $resultado = DB::table('HistoricoLiquidacion')->where('Id_Funcionario', $Id_Funcionario)->distinct()->get('Ano');
+        $resultado = DB::connection('cementerio')->table('HistoricoLiquidacion')->where('Id_Funcionario', $Id_Funcionario)->distinct()->get('Ano');
                 
-        $date=date("Y");
+        $date=date("Y"); 
         $seis='6';
 
-        $sqlnumerodiassolicitados = DB::table('PermisosAdministrativos')
+        $sqlnumerodiassolicitados = DB::connection('cementerio')->table('PermisosAdministrativos')
             ->leftjoin('FichaFuncionario', 'PermisosAdministrativos.Id_Funcionario', '=', 'FichaFuncionario.Id_Funcionario')
             ->where('FichaFuncionario.rut', '=', $RUN)
             ->where('PermisosAdministrativos.Periodo', '=', $date)
@@ -29,13 +29,14 @@ class volverIndexController extends Controller
                   $numerodiassolicitados = $sqlnumerodiassolicitados->NroDiasSolicitados;
             }
             else{
-                    $numerodiassolicitados = 0;
+                $numerodiassolicitados = 0;
             }
+              
             
-            $R_numerodiassolicitados=($seis - $numerodiassolicitados); 
+            $R_numerodiassolicitados=($seis - $numerodiassolicitados);
 
 
-            $sqlDiasFeriados = DB::table('PermisosLegales')
+            $sqlDiasFeriados = DB::connection('cementerio')->table('PermisosLegales')
             ->leftjoin('FichaFuncionario', 'PermisosLegales.Id_Funcionario', '=', 'FichaFuncionario.Id_Funcionario')
             ->where('FichaFuncionario.rut', '=', $RUN)
             ->where('PermisosLegales.Periodo', '=', $date)
@@ -50,7 +51,7 @@ class volverIndexController extends Controller
                 $sqlDiasFeriados = 0; 
             }
 
-            return view('Sistema/PlantaContrata/Principal')->with('resultado', $resultado)->with('RUN', $RUN)->with('Id_Funcionario', $Id_Funcionario)->with('R_numerodiassolicitados', $R_numerodiassolicitados)->with('sqlDiasFeriados', $sqlDiasFeriados);
+            return view('Sistema/Cementerio/PrincipalCementerio')->with('resultado', $resultado)->with('RUN', $RUN)->with('Id_Funcionario', $Id_Funcionario)->with('R_numerodiassolicitados', $R_numerodiassolicitados)->with('sqlDiasFeriados', $sqlDiasFeriados);
 
       
 

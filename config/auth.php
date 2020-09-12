@@ -34,7 +34,7 @@ return [
     | Supported: "session", "token"
     |
     */
-
+ 
     'guards' => [
         'web' => [
             'driver' => 'session',
@@ -44,6 +44,28 @@ return [
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
+            'hash' => false,
+        ],
+
+        'Cementerio' => [
+            'driver' => 'session', 
+            'provider' => 'Cementerios',
+        ],
+
+        'Cementerio_api' => [
+            'driver' => 'token',
+            'provider' => 'Cementerios',
+            'hash' => false,
+        ],
+
+        'Codigo' => [
+            'driver' => 'session', 
+            'provider' => 'Codigos',
+        ],
+
+        'Codigo_api' => [
+            'driver' => 'token',
+            'provider' => 'Codigos',
             'hash' => false,
         ],
     ],
@@ -65,10 +87,21 @@ return [
     |
     */
 
-    'providers' => [
+    'providers' => [ 
+        
         'users' => [
             'driver' => 'eloquent',
             'model' => App\User::class,
+        ],
+
+        'Cementerios' => [
+            'driver' => 'eloquent',
+            'model' => App\UserCementerio::class,
+        ],
+
+        'Codigos' => [
+            'driver' => 'eloquent',
+            'model' => App\UserCodigo::class,
         ],
 
         // 'users' => [
@@ -95,6 +128,20 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+
+        'Cementerios' => [
+            'provider' => 'Cementerios',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+
+         'Codigos' => [
+            'provider' => 'Codigos',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,

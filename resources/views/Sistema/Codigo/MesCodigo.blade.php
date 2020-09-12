@@ -6,7 +6,7 @@
 	<div class="row">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-4"></div>
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
-			<form method="POST" action="{{ route('CrearPDF') }}">  
+			<form method="POST" action="{{ route('CrearPDFCo') }}">   
 				@csrf
 				<input type="hidden" name="RUN" value="{{ $RUN }}">
 				<input type="hidden" name="Anio" value="{{ $Anio }}">
@@ -153,10 +153,9 @@
 		</div>
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-4"></div>
 	</div>
-	<hr style="width:100%; border-color: green;">
-		<center>
+	<center>
 		<a href="javascript:history.back()" style="color: green;"> Volver</a>
-		</center>	
+	</center>	
 				</div>
 	 
 			</div> 

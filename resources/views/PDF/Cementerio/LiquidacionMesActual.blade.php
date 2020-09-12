@@ -8,40 +8,29 @@ $horaesac = getdate();
 $fecha_hoy=date("d/m/Y");
 $hora=date("H:i:s");
 
+$r=1;
+$rr=1;
 
- $r=1;
- $rr=1;
+$resultado = DB::connection('cementerio')->table('Liquidacion')
+            ->join('FichaFuncionario', 'Liquidacion.Id_Funcionario', '=', 'FichaFuncionario.Id_Funcionario')
+            ->join('Afp', 'FichaFuncionario.Id_Afp', '=', 'Afp.Id_Afp')
+            ->join('Isapres', 'FichaFuncionario.Id_Isapre', '=', 'Isapres.ID_Isapre')
+            ->join('FichaMunicipal', 'FichaFuncionario.Id_Funcionario', '=', 'FichaMunicipal.Id_Funcionario')
+            ->where('FichaFuncionario.Rut', '=', $rut)
+            ->first();
 
+$consulta01 = DB::connection('cementerio')->table('MovimientoLiquidacion')
+            ->join('Descuentos', 'MovimientoLiquidacion.Id_HaberDcto', '=', 'Descuentos.Id_Descuento')
+            ->join('FichaFuncionario', 'MovimientoLiquidacion.Id_Funcionario', '=', 'FichaFuncionario.Id_Funcionario')
+            ->where('MovimientoLiquidacion.Tipo_HaberDcto', '=', '1')
+            ->where('FichaFuncionario.Rut', '=', $rut)
+            ->get();
 
-$resultado = DB::table('HistoricoLiquidacion')
-->join('FichaFuncionario', 'HistoricoLiquidacion.Id_Funcionario', '=', 'FichaFuncionario.Id_Funcionario')
-->join('Afp', 'FichaFuncionario.Id_Afp', '=', 'Afp.Id_Afp')
-->join('Isapres', 'FichaFuncionario.Id_Isapre', '=', 'Isapres.Id_Isapre')
-->join('FichaMunicipal', 'HistoricoLiquidacion.Id_Funcionario', '=', 'FichaMunicipal.Id_Funcionario')
-->join('PlantasMunicipales', 'FichaMunicipal.Id_Planta', '=', 'PlantasMunicipales.Id_Planta')
-->join('ModoDctos', 'FichaFuncionario.ModoPactadoAuge', '=', 'ModoDctos.Id_ModoDctos')
-->join('HistoricoMovLiquidacion', 'FichaFuncionario.Id_Funcionario', '=', 'HistoricoMovLiquidacion.Id_Funcionario')
-->Join('Haberes', 'HistoricoMovLiquidacion.Id_HaberDcto', '=', 'Haberes.Id_Haber')
-->where('FichaFuncionario.rut', '=', $rut)
-->where('HistoricoLiquidacion.Mes', '=', $mes)
-->where('HistoricoLiquidacion.Ano', '=', $ano)
-->first();
-
-
-$cont=0;
-
-$resultado01 = DB::table('HistoricoMovLiquidacion')
-->join('Descuentos', 'HistoricoMovLiquidacion.Id_HaberDcto', '=', 'Descuentos.Id_Descuento')
-->join('FichaFuncionario', 'HistoricoMovLiquidacion.Id_Funcionario', '=', 'FichaFuncionario.Id_Funcionario')
-->where('HistoricoMovLiquidacion.Tipo_HaberDcto', '=', 1)
-->where('FichaFuncionario.Rut', '=', $rut)
-->where('mes', '=',$mes)
-->where('ano', '=',$ano)
-->get();
 
 @$i=0;
 
-    foreach($resultado01 as $fila)
+
+    foreach($consulta01 as $fila)
     {
         $Nombre[$i]=$fila->DctoDescripcion;
         $valor21[$i]=$fila->Valor_HaberDcto;
@@ -51,18 +40,19 @@ $resultado01 = DB::table('HistoricoMovLiquidacion')
 
 
 
-@$k=0;
+$k=0;
 
-$consulta02 = DB::table('HistoricoMovLiquidacion')
-->leftJoin('Haberes', 'HistoricoMovLiquidacion.Id_HaberDcto', '=', 'Haberes.Id_Haber')
-->leftJoin('FichaFuncionario', 'HistoricoMovLiquidacion.Id_Funcionario', '=', 'FichaFuncionario.Id_Funcionario')
-->where('HistoricoMovLiquidacion.Tipo_HaberDcto', '=', 0)
-->where('FichaFuncionario.Rut', '=', $rut)
-->where('mes', '=',$mes)
-->where('ano', '=',$ano)
-->get();
+$resultado02 = DB::connection('cementerio')->table('MovimientoLiquidacion')
+            ->join('Haberes', 'MovimientoLiquidacion.Id_HaberDcto', '=', 'Haberes.Id_Haber')
+            ->join('FichaFuncionario', 'MovimientoLiquidacion.Id_Funcionario', '=', 'FichaFuncionario.Id_Funcionario')
+            ->where('MovimientoLiquidacion.Tipo_HaberDcto', '=', '0' )
+            ->where('FichaFuncionario.Rut', '=', $rut)
+            ->get();
 
-    foreach($consulta02 as $fila)
+
+
+
+    foreach($resultado02 as $fila)
     {
         $NOmbre2[$k]=$fila->HaberDescripcion;
         $Valor22[$k]=$fila->Valor_HaberDcto;
@@ -70,16 +60,8 @@ $consulta02 = DB::table('HistoricoMovLiquidacion')
         $k++;
     }
 
-
- // $id->Id_Funcionario
-
-
-if (!empty($resultado->ModoDctos_Signo)) {
-   
-
-$ModoDctos_Signo=$resultado->ModoDctos_Signo;    
 $Id_Planta=$resultado->Id_Planta;
-$PlantaNombre=$resultado->PlantaNombre;  
+
 $grado=$resultado->Id_Grado;
 $jornada=$resultado->Jornada;
 $codigo=$resultado->Id_Funcionario;
@@ -324,13 +306,6 @@ $MontoAuge=$resultado->MontoAuge;
 
 $MontoPactadoReal=$resultado->MontoPactadoReal;
 
-$Id_HaberDcto=$resultado->Id_HaberDcto;
-
-$Tipo_HaberDcto=$resultado->Tipo_HaberDcto;
-
-$HaberDescripcion=$resultado->HaberDescripcion;
-$Valor_HaberDcto=$resultado->Valor_HaberDcto;
-
 $apellido=$resultado->Apellidos;
 
 $nombres=$resultado->Nombres;
@@ -552,7 +527,7 @@ $z=0;
     $r++; 
     }
 
-    $resultado0 = DB::table('Municipalidad')->first();
+    $resultado0 = DB::connection('cementerio')->table('Municipalidad')->first();
     $nombrehabilitador=$resultado0->HabilitadoRemuneraciones;
 
     $sumatoria=($MontoJubilacion+$MontoSalud);
@@ -575,18 +550,18 @@ $z=0;
     $resto = substr ("$fecha_inicio", 0,10); 
     $resto2 = substr ("$fecha_bienios", 0,10);  
 
-    if($mes==1){$meses="Enero";}
-    if($mes==2){$meses='Febrero';}
-    if($mes==3){$meses='Marzo';}
-    if($mes==4){$meses='Abril';}
-    if($mes==5){$meses='Mayo';}
-    if($mes==6){$meses='Junio';}
-    if($mes==7){$meses='Julio';}
-    if($mes==8){$meses='Agosto';}
-    if($mes==9){$meses='Septiembre';}
-    if($mes==10){$meses='Octubre';}
-    if($mes==11){$meses='Noviembre';}
-    if($mes==12){$meses='Diciembre';}
+    if($mes==1){$meses="Diciembre";}
+    if($mes==2){$meses='Enero';}
+    if($mes==3){$meses='Febrero';}
+    if($mes==4){$meses='Marzo';}
+    if($mes==5){$meses='Abril';}
+    if($mes==6){$meses='Mayo';}
+    if($mes==7){$meses='Junio';}
+    if($mes==8){$meses='Julio';}
+    if($mes==9){$meses='Agosto';}
+    if($mes==10){$meses='Septiembre';}
+    if($mes==11){$meses='Octubre';}
+    if($mes==12){$meses='Noviembre';}
 
     // @extends("PDF/DeNumero_a_Letras.php")
     $numerotexto= convertir($Liquido1); 
@@ -672,7 +647,7 @@ $z=0;
     <tr>
     </table>
 
-      <table width="100%" border="0" cellpadding="2">
+    <table width="100%" border="0" cellpadding="2">
         <tr>
           <td>
             <div>
@@ -714,10 +689,7 @@ $z=0;
                   <td>Fecha Bienios</td>
                   <td>: <?php echo $resto2; ?></td>
                 </tr>
-                <tr>
-                  <td><strong>Escalafon<strong></td>
-                  <td><strong>: <?php echo $Id_Planta.'&nbsp;' .$PlantaNombre; ?></strong></td>
-                </tr>
+               
                 <tr>
                   <td>Jornada</td>
                   <td>: <?php echo $jornada; ?></td>
@@ -765,10 +737,7 @@ $z=0;
                   <td>Pactado</td>
                   <td>: <?php echo $MontoPactadoReal; ?></td>
                 </tr>
-                <tr>
-                  <td>Modalidad Auge</td>
-                  <td>: <?php echo $ModoDctos_Signo; ?></td>
-                </tr>
+            
                 <tr>
                   <td>Pactado Auge</td>
                   <td>: <?php echo $MontoAuge; ?></td>
@@ -981,16 +950,9 @@ $z=0;
           </td>
         </tr>
       </table>
+    
 
 
+      
 
-
-<?php
-
-}
-else{
-    ?>
-
-    <center><h3>Su Liquidación no se encuentra disponible, diríjase a dirección de gestión de personas.</h3></center>
-<?php }
-?>
+      

@@ -2,12 +2,14 @@
 
 namespace App;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Contracts\Auth\MustVerifyEmail; 
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable; 
+use Illuminate\Notifications\Notifiable;  
 
-class User extends Authenticatable
+class UserCodigo extends Authenticatable
 {
+    // protected $guard = 'admin'; 
+	protected $connection = 'codigo';
     protected $table="FichaFuncionario";
     protected $primaryKey="Id_Funcionario";
     use Notifiable;
@@ -40,5 +42,4 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
- 
 }
