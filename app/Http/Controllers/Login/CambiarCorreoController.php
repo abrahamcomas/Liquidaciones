@@ -55,7 +55,7 @@ class CambiarCorreoController extends Controller
 			$resultado='Contraseña actual es incorrecta';
 		}
    		
-   		return view('Login/ContraseniaCambiada')->with('resultado', $resultado);
+   		return view('Login/PlantaContrata/ContraseniaCambiada')->with('resultado', $resultado);
 
  	}
 }

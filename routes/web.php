@@ -38,7 +38,7 @@ Route::post('SistemaMes','ConsultaMesController@Mes')->name('ConsultaMes')->midd
 
 //Cambiar Contrasenia
 Route::get('CambiarContrasenia', function () {
-    return view('Login/CambiarContrasenia');
+    return view('Login/PlantaContrata/CambiarContrasenia'); 
 })->middleware('auth')->name('CambiarContrasenia');  
 Route::get('ConfirmarCambioContrasenia')->middleware('auth');
 Route::post('ConfirmarCambioContrasenia','Login\CambiarContController@CambiarContrasenia')->middleware('auth')->name('FormContrasenia'); 

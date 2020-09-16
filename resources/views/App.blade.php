@@ -205,7 +205,7 @@
 	<footer>
 		<br>
   		<center>
-  			<p><a style="color: green">© {{ date("Y") }} Departamento de informática V 1.5<br>
+  			<p><a style="color: green">© {{ date("Y") }} Departamento de informática V 1.6<br>
 			Municipalidad de Curicó </a></p>
 		</center>
 	</footer>
