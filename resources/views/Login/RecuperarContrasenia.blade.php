@@ -16,7 +16,7 @@
 						@csrf 
 	                   	<div class="form-group">
 	                      	<div class="form-label-group">
-	                      		<center><label for="password"><center>Ingrese Email{{ 	 $R = Str::random(60), }}</center></label></center> 
+	                      		<center><label for="password"><center>Ingrese Email</center></label></center> 
 	                        	<input type="email" id="Email" name="Email" value="{{ old('Email') }}" class="form-control" placeholder="Email" >
 	                      	</div>
 	                   	</div>

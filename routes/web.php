@@ -1,11 +1,11 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use App\FichaFuncionario; 
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Auth; 
 use Illuminate\Auth\Middleware\Authenticate; 
 
-use App\User;
-use Illuminate\Http\Request;
+use App\User; 
+use Illuminate\Http\Request; 
 
 //Rutas De Login 
 Route::get('/', function () {  
@@ -16,6 +16,12 @@ Route::get('Registro', function () {
     return view('Login/Registrarse');
 })->name('Registrarse');
 
+Route::get('RecuperarContrasenia', function () { 
+    return view('Login/RecuperarContrasenia');
+})->name('Recuprar'); 
+ 
+Route::post('Login/RecuperarContrasenia','RecuperarContrasenia\RContraseniaController@RecuperarCont')->name('ContraseniaEnviada');
+
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -25,7 +31,7 @@ Route::get('Registro', function () {
 //Iniciar Sesion
 Route::post('Sistema/Principal','Login\LoginController@Login')->name('login'); 
 
-////Cerrar Sesion
+////Cerrar Sesion 
 Route::get('Sistema/Principal','Login\CerrarLoginControler@NoLogin')->middleware('auth');
 Route::get('CerrarSesion','Login\CerrarLoginControler@CerrarSesion')->middleware('auth')->name('CerrarSesion');
 
@@ -56,18 +62,12 @@ Route::post('LiquidacionesPDF','PDF\CrearPDF@PDF')->middleware('auth')->name('Cr
 Route::get('LiquidacionesPDFActual')->middleware('auth');
 Route::post('LiquidacionesPDFActual','PDF\CrearPDF@PDFActual')->middleware('auth')->name('CrearPDFActual');
 
+Route::get('ResetearContraseniaF1','RecuperarContrasenia\ResetearContrasenia1Controller@RecuperarCont1')->name('R1');
 
+//Restaurar contraseña por correo
+Route::patch('RestaurarC1','RecuperarContrasenia\IngresoNuevaC\RestaurarCon1Controller@Restaurar')->name('RestaurarC1');   
 
-//Recuperar Contraseña Pendiente
-Route::get('RecuperarContrasenia', function () { 
-    return view('Login/RecuperarContrasenia');
-})->name('Recuprar');
-Route::post('Login/RecuperarContrasenia','Login\RecuperarContController@RecuperarCont')->name('ContraseniaEnviada');
-
-
-
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////CEMENTERIO///////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -106,7 +106,10 @@ Route::get('LiquidacionesPDFActualCe')->middleware('auth:Cementerio');
 Route::post('LiquidacionesPDFActualCe','PDFCe\CrearPDF@PDFActual')->middleware('auth:Cementerio')->name('CrearPDFActualCe');
 
 
-  
+Route::get('ResetearContraseniaF2','RecuperarContrasenia\ResetearContrasenia2Controller@RecuperarCont2')->name('R2');
+ 
+//Restaurar contraseña por correo
+Route::post('RestaurarC2','RecuperarContrasenia\IngresoNuevaC\RestaurarCon2Controller@Restaurar')->name('RestaurarC2'); 
  
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////CODIGOS///////////////////////////////////////////////////////
@@ -146,6 +149,12 @@ Route::get('LiquidacionesPDFCo')->middleware('auth:Codigo');
 Route::post('LiquidacionesPDFCo','PDFCo\CrearPDFCo@PDF')->middleware('auth:Codigo')->name('CrearPDFCo'); 
 Route::get('LiquidacionesPDFActualCo')->middleware('auth:Codigo'); 
 Route::post('LiquidacionesPDFActualCo','PDFCo\CrearPDFCo@PDFActual')->middleware('auth:Codigo')->name('CrearPDFActualCo');
+
+
+Route::get('ResetearContraseniaF3','RecuperarContrasenia\ResetearContrasenia3Controller@RecuperarCont3')->name('R3');
+
+//Restaurar contraseña por correo
+Route::post('RestaurarC3','RecuperarContrasenia\IngresoNuevaC\RestaurarCon3Controller@Restaurar')->name('RestaurarC3'); 
 
 ?>
 

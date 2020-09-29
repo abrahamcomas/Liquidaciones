@@ -189,9 +189,13 @@
 				    		</div>
 		      			</li>
 		      		@else	
-		      			<a href="{{ route('Registrarse') }}" style="color: white;">Registrarse</a>
+		      			<a href="{{ route('Registrarse') }}" style="color: white;">
+		      				<center>Registrarse</center></a>
+		      			
+		      			<a href="{{ route('Recuprar') }}" style="color: white;">
+		      				<center>Recuperar Contraseña</center></a>
 		    		@endif
-				</div> 
+				</div>  
 			@endif
   		</ul>
 	</nav>

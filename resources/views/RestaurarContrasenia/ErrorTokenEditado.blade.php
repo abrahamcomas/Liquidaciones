@@ -10,9 +10,14 @@
 					<hr style="width:100%; border-color: green;">
 				</div>
 				<div class="panel-body">
-					<center><h5>{{ $resultado }}</h5></center> 
 					<br>
-					<center><a href="{{ route('Index') }}" style="color: green;">Volver</a></center> 
+					<center>
+						<h5 style="color: red;">Error, Link no valido</h5>
+					</center> 
+					<br>
+					<center>
+						<a href="{{ route('Index') }}" style="color: green;">Volver</a>
+					</center> 
 				</div>
 			</div> 
 		</div>

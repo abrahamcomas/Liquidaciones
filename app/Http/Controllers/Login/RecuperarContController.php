@@ -9,7 +9,7 @@ class RecuperarContController extends Controller
 {
     public function RecuperarCont(Request $request)
     {
-
+ 
         $credenciales = $this->validate(request(),[
             'Email' => 'required',
         ]); 
