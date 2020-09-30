@@ -8,16 +8,16 @@
 				<div class="panel-heading">
 					<center><h3>Liquidaciones de sueldo restaurar contraseña</h3></center> 
 					<hr style="width:100%; border-color: green;">
-				</div>
+				</div> 
 				<div class="panel-body">
-					<center>
+					<center> 
 						<h5> {{ $Datos->Nombres }} {{ $Datos->Apellidos }} </h5>
 					</center> 
-					<br>
+					<br> 
 					@include('Login/messages')
 					<form method="POST" action="{{ route('RestaurarC1') }}">
 							@csrf @method('PATCH')
-							<input type="hidden" id="Id_Funcionario" name="Id_Funcionario">
+							<input type="hidden" id="Id_Funcionario" name="Id_Funcionario" value="{{ $Datos->Id_Funcionario }}">
 		                    <div class="form-group">
 		                      	<div class="form-label-group">
 		                      		<center><label for="Contrasenia"><center>Ingrese Contraseña</center></label></center> 

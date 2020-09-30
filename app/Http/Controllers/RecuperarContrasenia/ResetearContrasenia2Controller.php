@@ -10,14 +10,16 @@ class ResetearContrasenia2Controller extends Controller
 {
     public function RecuperarCont2(Request $request)
     {
-    	$id = $request->input('id');
+    	
+        $id = $request->input('id');
     	$token = $request->input('token');
-
-    	if (isset($id) AND isset($token)) {
+        $CorreoActivo = 2;  
+    	
+        if (isset($id) AND isset($token)) {
   
-				$Datos=DB::connection('cementerio')->table('FichaFuncionario')->Select('Id_Funcionario','Nombres','Apellidos','Token')->where('Id_Funcionario',$id)->first();
+				$Datos=DB::connection('cementerio')->table('FichaFuncionario')->Select('Id_Funcionario','Nombres','Apellidos','CorreoActivo','Token')->where('Id_Funcionario',$id)->first();
     	 
-    			if ($Datos->Token==$token){
+    			if ($Datos->Token==$token AND $Datos->CorreoActivo==$CorreoActivo){
     				return view('RestaurarContrasenia/TokenValido2')->with('Datos', $Datos);
     			}	 
     			else{

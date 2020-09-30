@@ -13,12 +13,13 @@ class ResetearContrasenia1Controller extends Controller
 
     	$id = $request->input('id');
     	$token = $request->input('token');
+        $CorreoActivo = 2; 
 
-    	if (isset($id) AND isset($token)) {
+    	if (isset($id) AND isset($token)) {  
   
-				$Datos=DB::table('FichaFuncionario')->Select('Id_Funcionario','Nombres','Apellidos','Token')->where('Id_Funcionario',$id)->first();
+				$Datos=DB::table('FichaFuncionario')->Select('Id_Funcionario','Nombres','Apellidos','CorreoActivo','Token')->where('Id_Funcionario',$id)->first();
     	 
-    			if ($Datos->Token==$token){
+    			if ($Datos->Token==$token AND $Datos->CorreoActivo==$CorreoActivo){
     				return view('RestaurarContrasenia/TokenValido1')->with('Datos', $Datos);
     			}	 
     			else{

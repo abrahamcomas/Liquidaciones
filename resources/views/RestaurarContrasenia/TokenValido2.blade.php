@@ -17,7 +17,7 @@
 					@include('Login/messages')
 					<form method="POST" action="{{ route('RestaurarC2') }}">
 							@csrf @method('PATCH')
-							<input type="hidden" id="Id_Funcionario" name="Id_Funcionario">
+							<input type="hidden" id="Id_Funcionario" name="Id_Funcionario" value="{{ $Datos->Id_Funcionario }}">
 		                    <div class="form-group">
 		                      	<div class="form-label-group">
 		                      		<center><label for="Contrasenia"><center>Ingrese Contraseña</center></label></center> 

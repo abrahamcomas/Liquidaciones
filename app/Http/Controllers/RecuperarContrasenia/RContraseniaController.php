@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
-
+ 
 use App\FichaFuncionario;
 use App\FichaFuncionarioCementerio;
 use App\FichaFuncionarioCodigo;
@@ -20,41 +20,48 @@ class RContraseniaController extends Controller
  
         $rules = [
             'Email' => 'required',
+            'C' => 'required',
         ]; 
  
         $messages = [ 
             'Email.required' =>'El campo Email es obligatorio.',
+            'C.required' =>'El campo tipo contrato es obligatorio.',
         ]; 
 
         $this->validate($request, $rules, $messages);
 
         $Email = $request->input('Email');
+        $C = $request->input('C');
 
- 		$FPC=DB::table('FichaFuncionario')->where('Email', $Email)->exists();
-        	
-		$FCementerio=DB::connection('cementerio')->table('FichaFuncionario')->where('Email', $Email)->exists();
+		if ($C==1) { 
 
-		$FCodigo=DB::connection('codigo')->table('FichaFuncionario')->where('Email', $Email)->exists();
+			$FPC=DB::table('FichaFuncionario')->where('Email', $Email)->exists(); 
 
-		if ($FPC==1) {  
+			if ($FPC==1) {
+				
+				$datos=DB::table('FichaFuncionario')->Select('Id_Funcionario','Nombres','Apellidos')->whereEmail($Email)->first();
 
-			$datos=DB::table('FichaFuncionario')->Select('Id_Funcionario','Nombres','Apellidos')->whereEmail($Email)->first();
+				$token1=Str::random(120); 
 
-			$token1=Str::random(120); 
+				$user = FichaFuncionario::find($datos->Id_Funcionario);
+				$user->CorreoActivo = 2;  
+	            $user->Token = $token1;
+	            $user->save();
 
-			$user = FichaFuncionario::find($datos->Id_Funcionario);
-            $user->Token = $token1;
-            $user->save();
+				$resultado='Funcionario '.$datos->Nombres.' '.$datos->Apellidos.' correo enviado correctamente';
+				
+				$token= 'http://liquidaciones.test/ResetearContraseniaF1?id='.$datos->Id_Funcionario.'&token='.$token1;
 
-			$resultado='Funcionario '.$datos->Nombres.' '.$datos->Apellidos.' correo enviado correctamente';
-			
-			$token= 'http://liquidaciones.test/ResetearContraseniaF1?id='.$datos->Id_Funcionario.'&token='.$token1;
+				// Tengo que cambiar el link
+				// $token= 'http://liquidaciones.municipalidadcurico.cl/ResetearContraseniaF1?id='.$datos->Id_Funcionario.'&token='.$token1;
 
-			// Tengo que cambiar el link
-			// $token= 'http://liquidaciones.municipalidadcurico.cl/ResetearContraseniaF1?id='.$datos->Id_Funcionario.'&token='.$token1;
-			
-			Mail::to($Email)->send(new RecuperarPassword($datos,$token));
+				Mail::to($Email)->send(new RecuperarPassword($datos,$token));
 
+			}
+			else{
+
+ 				$resultado='Error, Email no existe en los registros';
+			}
 			//Ejemplo Respaldo
 			// $subject = "Restauración Contraseña";
    			// $for =$Email;
@@ -66,52 +73,73 @@ class RContraseniaController extends Controller
    			// });
 
 		}
-		elseif($FCementerio==1){ 
+		elseif($C==2){ 
 
-			$datos=DB::connection('cementerio')->table('FichaFuncionario')->Select('Id_Funcionario','Nombres','Apellidos')->whereEmail($Email)->first();
+			$FCementerio=DB::connection('cementerio')->table('FichaFuncionario')->where('Email', $Email)->exists();
 
-        	$resultado='Funcionario '.$datos->Nombres.' '.$datos->Apellidos.' correo enviado correctamente';
+			if ($FCementerio==1) {
+
+				$datos=DB::connection('cementerio')->table('FichaFuncionario')->Select('Id_Funcionario','Nombres','Apellidos')->whereEmail($Email)->first();
+
+	        	$resultado='Funcionario '.$datos->Nombres.' '.$datos->Apellidos.' correo enviado correctamente';
+				
+				$token1=Str::random(120); 
+
+				$user = FichaFuncionarioCementerio::find($datos->Id_Funcionario);
+				$user->CorreoActivo = 2; 
+	            $user->Token = $token1;
+	            $user->save();
+
+				$token= 'http://liquidaciones.test/ResetearContraseniaF2?id='.$datos->Id_Funcionario.'&token='.$token1;
+
+				//Tengo que cambiar el link
+				// $token= 'http://liquidaciones.municipalidadcurico.cl/ResetearContraseniaF2?id='.$datos->Id_Funcionario.'&token='.$token1;
+				
+				Mail::to($Email)->send(new RecuperarPassword($datos,$token));
+			}
+			else{
+
+				$resultado='Error, Email no existe en los registros';
+			}
+
 			
-			$token1=Str::random(120); 
-
-			$user = FichaFuncionarioCementerio::find($datos->Id_Funcionario);
-            $user->Token = $token1;
-            $user->save();
-
-			$token= 'http://liquidaciones.test/ResetearContraseniaF2?id='.$datos->Id_Funcionario.'&token='.$token1;
-
-			//Tengo que cambiar el link
-			// $token= 'http://liquidaciones.municipalidadcurico.cl/ResetearContraseniaF2?id='.$datos->Id_Funcionario.'&token='.$token1;
-			
-			Mail::to($Email)->send(new RecuperarPassword($datos,$token));
 
 		}
-		elseif($FCodigo==1){
+		elseif($C==3){
 
-			$Datos=DB::connection('codigo')->table('FichaFuncionario')->Select('Id_Funcionario','Nombres','Apellidos')->whereEmail($Email)->first();
+			$FCodigo=DB::connection('codigo')->table('FichaFuncionario')->where('Email', $Email)->exists();
 
-        	$resultado='Funcionario '.$datos->Nombres.' '.$datos->Apellidos.' correo enviado correctamente';
+			if ($FCodigo==1) {
+				
+				$datos=DB::connection('codigo')->table('FichaFuncionario')->Select('Id_Funcionario','Nombres','Apellidos')->whereEmail($Email)->first();
+
+	        	$resultado='Funcionario '.$datos->Nombres.' '.$datos->Apellidos.' correo enviado correctamente';
+				
+				$token1=Str::random(120); 
+
+				$user = FichaFuncionarioCodigo::find($datos->Id_Funcionario);
+				$user->CorreoActivo = 2; 
+	            $user->Token = $token1;
+	            $user->save();
+
+				$token= 'http://liquidaciones.test/ResetearContraseniaF3?id='.$datos->Id_Funcionario.'&token='.$token1;
+
+				//Tengo que cambiar el link
+				// $token= 'http://liquidaciones.municipalidadcurico.cl/ResetearContraseniaF3?id='.$datos->Id_Funcionario.'&token='.$token1;
 			
-			$token1=Str::random(120); 
-
-			$user = FichaFuncionarioCementerio::find($datos->Id_Funcionario);
-            $user->Token = $token1;
-            $user->save();
-
-			$token= 'http://liquidaciones.test/ResetearContraseniaF3?id='.$datos->Id_Funcionario.'&token='.$token1;
-
-			//Tengo que cambiar el link
-			// $token= 'http://liquidaciones.municipalidadcurico.cl/ResetearContraseniaF3?id='.$datos->Id_Funcionario.'&token='.$token1;
-			
-			Mail::to($Email)->send(new RecuperarPassword($datos,$token));
+				Mail::to($Email)->send(new RecuperarPassword($datos,$token));
+			}
+			else{
+				$resultado='Error, Email no existe en los registros';
+			}
 
 		}
 		else{
 
-			 $resultado='Error, Email no existe en los registros';
+			 $resultado='Error';
 		}
  
-            return view('Login/Registrosend')->with('resultado', $resultado);
+        return view('Login/Registrosend')->with('resultado', $resultado);
 	}
 }
  
