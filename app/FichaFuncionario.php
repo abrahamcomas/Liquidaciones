@@ -20,7 +20,7 @@ class FichaFuncionario extends Model
     ]; 
 
     /*
-    inset multiples
+    inset multiples    
     protected $guarded=[
 
     		//pongo los caampos que no se pueden insertar
