@@ -201,15 +201,18 @@
 	</nav>
 
 	<img id="imagen1" img src="{{ asset('Imagenes/logo2.png') }}" width="200" height="60"/>
+	@livewireStyles
 </head>
 <div class="container">
 	@yield("content")
+
+	@livewireScripts
  	@yield('scripts')
 	@yield("foot")
 	<footer>
 		<br>
   		<center>
-  			<p><a style="color: green">© {{ date("Y") }} Departamento de informática V 1.8<br>
+  			<p><a style="color: green">© {{ date("Y") }} Departamento de informática V 1.9<br>
 			Municipalidad de Curicó </a></p>
 		</center>
 	</footer>

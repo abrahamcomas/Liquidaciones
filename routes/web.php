@@ -16,8 +16,14 @@ Route::get('Registro', function () {
     return view('Login/Registrarse');
 })->name('Registrarse');
 
+
+//Habilitar en caso de volver atras
+// Route::get('RecuperarContrasenia', function () { 
+//     return view('Login/RecuperarContrasenia');
+// })->name('Recuprar'); 
+
 Route::get('RecuperarContrasenia', function () { 
-    return view('Login/RecuperarContrasenia');
+    return view('postsCont');
 })->name('Recuprar'); 
  
 Route::post('Login/RecuperarContrasenia','RecuperarContrasenia\RContraseniaController@RecuperarCont')->name('ContraseniaEnviada');

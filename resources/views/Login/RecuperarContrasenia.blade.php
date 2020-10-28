@@ -40,7 +40,7 @@
 		                            </select> 
 	                        	</div>
 	                        </div> 
-		                   	<button class="btn btn-success active btn-block enviar">Enviar</button>
+		                   	<button id="btnEnviar" class="btn btn-success active btn-block enviar">Enviar</button>
 						</form>
 						<center>
 							<br> 
@@ -56,11 +56,50 @@
 @endsection 
 @section('scripts')
 	<script type="text/javascript">
-		$(document).ready(function(){
- 			$(document).on('click', '.enviar', function(){
- 				$("#content").hide();
-			    $("#EnvindoCorreo").show(); 
-			});   
-        });
+		// $(document).ready(function(){
+ 	// 		$(document).on('click', '.enviar', function(){
+ 	// 			var btnEnviar = $("#btnEnviar");
+ 	// 		 btnEnviar.attr("disabled","disabled");
+		// 	  btnEnviar.text("Enviando");
+               
+		// 	});   
+  //       });
+
+    //       $(document).ready(function () {
+    // $("#formCorreo").bind("submit",function(){
+    //     // Capturamnos el boton de envío
+    //     var btnEnviar = $("#btnEnviar");
+    //     $.ajax({
+    //         type: $(this).attr("method"),
+    //         url: $(this).attr("action"),
+    //         data:$(this).serialize(),
+    //         beforeSend: function(){
+    //             /*
+    //             * Esta función se ejecuta durante el envió de la petición al
+    //             * servidor.
+    //             * */
+    //             // btnEnviar.text("Enviando"); Para button 
+    //             btnEnviar.val("Enviando"); // Para input de tipo button
+    //             btnEnviar.attr("disabled","disabled");
+    //         },
+    //         complete:function(data){
+    //             /*
+    //             * Se ejecuta al termino de la petición
+    //             * */
+    //             btnEnviar.val("Enviar formulario");
+    //             btnEnviar.removeAttr("disabled");
+    //         },
+    //         success: function(data){
+    //              			$("#content").hide();
+		  //   $("#EnvindoCorreo").show(); 
+    //         },
+           
+    //     });
+    //     // Nos permite cancelar el envio del formulario
+    //     return false;
+    // });
+// });
 	</script>
 @endsection 
+
+
