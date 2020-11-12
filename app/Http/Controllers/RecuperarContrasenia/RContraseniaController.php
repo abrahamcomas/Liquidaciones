@@ -50,10 +50,10 @@ class RContraseniaController extends Controller
 
 				$resultado='Funcionario '.$datos->Nombres.' '.$datos->Apellidos.' correo enviado correctamente';
 				
-				$token= 'http://liquidaciones.test/ResetearContraseniaF1?id='.$datos->Id_Funcionario.'&token='.$token1;
+				//$token= 'http://liquidaciones.test/ResetearContraseniaF1?id='.$datos->Id_Funcionario.'&token='.$token1;
 
 				// Tengo que cambiar el link
-				// $token= 'http://liquidaciones.municipalidadcurico.cl/ResetearContraseniaF1?id='.$datos->Id_Funcionario.'&token='.$token1;
+				$token= 'http://liquidaciones.municipalidadcurico.cl/ResetearContraseniaF1?id='.$datos->Id_Funcionario.'&token='.$token1;
 
 				Mail::to($Email)->send(new RecuperarPassword($datos,$token));
 
@@ -90,10 +90,10 @@ class RContraseniaController extends Controller
 	            $user->Token = $token1;
 	            $user->save();
 
-				$token= 'http://liquidaciones.test/ResetearContraseniaF2?id='.$datos->Id_Funcionario.'&token='.$token1;
+				//$token= 'http://liquidaciones.test/ResetearContraseniaF2?id='.$datos->Id_Funcionario.'&token='.$token1;
 
 				//Tengo que cambiar el link
-				// $token= 'http://liquidaciones.municipalidadcurico.cl/ResetearContraseniaF2?id='.$datos->Id_Funcionario.'&token='.$token1;
+				$token= 'http://liquidaciones.municipalidadcurico.cl/ResetearContraseniaF2?id='.$datos->Id_Funcionario.'&token='.$token1;
 				
 				Mail::to($Email)->send(new RecuperarPassword($datos,$token));
 			}
@@ -122,10 +122,10 @@ class RContraseniaController extends Controller
 	            $user->Token = $token1;
 	            $user->save();
 
-				$token= 'http://liquidaciones.test/ResetearContraseniaF3?id='.$datos->Id_Funcionario.'&token='.$token1;
+				//$token= 'http://liquidaciones.test/ResetearContraseniaF3?id='.$datos->Id_Funcionario.'&token='.$token1;
 
 				//Tengo que cambiar el link
-				// $token= 'http://liquidaciones.municipalidadcurico.cl/ResetearContraseniaF3?id='.$datos->Id_Funcionario.'&token='.$token1;
+				$token= 'http://liquidaciones.municipalidadcurico.cl/ResetearContraseniaF3?id='.$datos->Id_Funcionario.'&token='.$token1;
 			
 				Mail::to($Email)->send(new RecuperarPassword($datos,$token));
 			}
