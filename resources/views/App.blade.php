@@ -1,6 +1,7 @@
 <meta charset="utf-8">
 <title>Liquidaciones</title>
 <head>
+	<meta name="viewport" content="width=device-width"/>
 	{{-- @php
 		header("Expires: Tue, 01 Jul 2001 06:00:00 GMT");
 		header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
@@ -212,7 +213,7 @@
 	<footer>
 		<br>
   		<center>
-  			<p><a style="color: green">© {{ date("Y") }} Departamento de informática V 1.9<br>
+  			<p><a style="color: green">© {{ date("Y") }} Departamento de informática V 2.0<br>
 			Municipalidad de Curicó </a></p>
 		</center>
 	</footer>

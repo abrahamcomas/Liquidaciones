@@ -8,11 +8,7 @@ use App\Http\Controllers\Controller;
 
 class CrearPDF extends Controller
 {
-	public function __construct()
-	{
-		$this->middleware('auth');
-
-	}
+	
 	
     public function PDF(Request $request) 
     {

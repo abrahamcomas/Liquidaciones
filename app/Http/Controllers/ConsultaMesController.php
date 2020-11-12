@@ -25,8 +25,10 @@ class ConsultaMesController extends Controller
 
 		$MesActual=DB::table('Liquidacion')->where('Id_Funcionario', $Id_Funcionario)->get();
 
-            return view('Sistema/PlantaContrata/Mes')->with('ListaMes', $ListaMes)->with('MesActual', $MesActual)->with('RUN', $RUN)->with('Id_Funcionario', $Id_Funcionario)->with('Anio', $Anio);
+        // return view('Sistema/PlantaContrata/Mes')->with('ListaMes', $ListaMes)->with('MesActual', $MesActual)->with('RUN', $RUN)->with('Id_Funcionario', $Id_Funcionario)->with('Anio', $Anio);
+
+		return view('postsMesesPC')->with('ListaMes', $ListaMes)->with('MesActual', $MesActual)->with('RUN', $RUN)->with('Id_Funcionario', $Id_Funcionario)->with('Anio', $Anio);
    
-	}
-}
- ?>  
+	} 
+} 
+ ?>   

@@ -18,12 +18,12 @@ Route::get('Registro', function () {
 
 
 //Habilitar en caso de volver atras
-// Route::get('RecuperarContrasenia', function () { 
+// Route::get('RecuperarContrasenia', function () {  
 //     return view('Login/RecuperarContrasenia');
 // })->name('Recuprar'); 
 
 Route::get('RecuperarContrasenia', function () { 
-    return view('postsCont');
+    return view('postsCont'); 
 })->name('Recuprar'); 
  
 Route::post('Login/RecuperarContrasenia','RecuperarContrasenia\RContraseniaController@RecuperarCont')->name('ContraseniaEnviada');
@@ -62,11 +62,17 @@ Route::get('Sistema/CambiarCorreo', function () {
 Route::post('ConfirmarCambioCorreo','Login\CambiarCorreoController@CambiarCorreo')->middleware('auth')->name('FormCorreo');
 Route::get('Sistema','Login\VolverIndexController@VolverIndex')->middleware('auth')->name('VolverIndex');
 
-//Creacion de PDF Cementerio 
+//Creacion de PDF  
 Route::get('LiquidacionesPDF')->middleware('auth'); 
 Route::post('LiquidacionesPDF','PDF\CrearPDF@PDF')->middleware('auth')->name('CrearPDF'); 
 Route::get('LiquidacionesPDFActual')->middleware('auth');
 Route::post('LiquidacionesPDFActual','PDF\CrearPDF@PDFActual')->middleware('auth')->name('CrearPDFActual');
+
+//Creacion PDF PMG
+
+Route::get('LiquidacionesPMG')->middleware('auth'); 
+Route::post('LiquidacionesPMG','PDF\PDF_PMG_Controller@PDF')->middleware('auth')->name('CrearPMG'); 
+
 
 Route::get('ResetearContraseniaF1','RecuperarContrasenia\ResetearContrasenia1Controller@RecuperarCont1')->name('R1');
 

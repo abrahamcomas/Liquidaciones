@@ -27,7 +27,7 @@
                                 <option value="3">Código</option>
                             </select> 
                     	</div>
-                    </div>  
+                    </div>   
  
                    	<button wire:click="Enviarcorreo" wire:loading.remove class="btn btn-success active btn-block enviar">Enviar</button>
 					
